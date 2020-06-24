@@ -1,0 +1,7 @@
+version: 1.0.{build}
+configuration: Debug
+platform: x64
+before_build:
+- ps: nuget restore
+build:
+  verbosity: normal
