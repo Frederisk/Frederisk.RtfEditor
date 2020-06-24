@@ -9,6 +9,36 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="48" Opacity="0.5">
+            <Grid.Column>0</Grid.Column>
+            <Grid.ColumnSpan>2</Grid.ColumnSpan>
+            <Grid.Row>0</Grid.Row>
+            <TextBlock.Text>
+                Welcome to RTF Editor!
+            </TextBlock.Text>
+        </TextBlock>
+        <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid.Column>0</Grid.Column>
+            <Grid.Row>1</Grid.Row>
+            <StackPanel>
+                <Button>
+                    <Button.Content>
+                        <TextBlock>
+                            Null
+                        </TextBlock>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+        
+        
     </Grid>
 </Page>

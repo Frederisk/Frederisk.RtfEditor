@@ -15,15 +15,14 @@ using Windows.UI.Xaml.Navigation;
 
 // 空白頁項目範本已記錄在 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x404
 
-namespace Frederisk.RtfEditor.Windows
-{
+namespace Frederisk.RtfEditor.Windows {
+
     /// <summary>
     /// 可以在本身使用或巡覽至框架內的空白頁面。
     /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
+    public sealed partial class MainPage : Page {
+
+        public MainPage() {
             this.InitializeComponent();
         }
     }
