@@ -5,18 +5,21 @@
     xmlns:local="using:Frederisk.RtfEditor.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:myControls="using:Frederisk.RtfEditor.Windows.Controllers"
+    xmlns:myPage="using:Frederisk.RtfEditor.Windows.Pages"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
         <TextBlock FontSize="48" Opacity="0.5">
             <Grid.Column>0</Grid.Column>
             <Grid.ColumnSpan>2</Grid.ColumnSpan>
@@ -25,20 +28,18 @@
                 Welcome to RTF Editor!
             </TextBlock.Text>
         </TextBlock>
+
         <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
             <Grid.Column>0</Grid.Column>
             <Grid.Row>1</Grid.Row>
             <StackPanel>
-                <Button>
-                    <Button.Content>
-                        <TextBlock>
-                            Null
-                        </TextBlock>
-                    </Button.Content>
-                </Button>
+                <ItemsControl ItemsSource="{x:Bind ViewModule.ActionButtons}" />
             </StackPanel>
         </ScrollViewer>
-        
-        
+
+        <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Content="{x:Bind ViewModule.MainFrame}">
+            <Grid.Column>1</Grid.Column>
+            <Grid.Row>1</Grid.Row>
+        </ScrollViewer>
     </Grid>
 </Page>

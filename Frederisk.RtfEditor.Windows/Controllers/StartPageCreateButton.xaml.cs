@@ -1,19 +1,16 @@
 ﻿#nullable enable
 
 using System;
-using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
 
 // 使用者控制項項目範本記載於 https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Frederisk.RtfEditor.Windows.Controllers {
 
-    public sealed partial class MainPageActionButton : UserControl {
+    public sealed partial class StartPageCreateButton : UserControl {
 
-        public MainPageActionButton() {
+        public StartPageCreateButton() {
             this.InitializeComponent();
         }
 
@@ -45,22 +42,6 @@ namespace Frederisk.RtfEditor.Windows.Controllers {
                 new PropertyMetadata(Symbol.Home)
             );
 
-        public static readonly DependencyProperty IsCheckedProperty =
-            DependencyProperty.Register(
-                "IsChecked",
-                typeof(Boolean?),
-                typeof(MainPageActionButton),
-                new PropertyMetadata(false)
-            );
-
-        public Boolean? IsChecked {
-            get => (Boolean?)GetValue(IsCheckedProperty);
-            set => SetValue(IsCheckedProperty, value);
-        }
-
         #endregion DependencyProperty
-
-        public Type? PageType { get; set; }
-
     }
 }
