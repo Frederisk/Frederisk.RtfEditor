@@ -1,7 +1,13 @@
 version: 1.0.{build}
-configuration: Debug
-platform: x64
+image: Visual Studio 2019
+configuration:
+- Debug
+- Release
+platform:
+- x86
+- x64
+- ARM
 before_build:
 - ps: nuget restore
 build:
-  verbosity: normal
+  verbosity: detailed
