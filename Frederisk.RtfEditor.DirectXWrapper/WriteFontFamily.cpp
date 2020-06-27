@@ -12,7 +12,7 @@ WriteFontFamily::WriteFontFamily(ComPtr<IDWriteFontFamily> pFontFamily) {
 
 WriteLocalizedStrings^ WriteFontFamily::GetFamilyNames() {
     ComPtr<IDWriteLocalizedStrings> pFamilyNames;
-    TryTo(pFontFamily->GetFamilyNames(&pFamilyNames));
+    Check(pFontFamily->GetFamilyNames(&pFamilyNames));
     return ref new WriteLocalizedStrings(pFamilyNames);
 }
 
@@ -55,6 +55,6 @@ WriteFont^ WriteFontFamily::GetFirstMatchingFont(FontWeight fontWeight, FontStre
     DWRITE_FONT_STRETCH writeFontStretch = (DWRITE_FONT_STRETCH)fontStretch;
     DWRITE_FONT_STYLE writeFontStyle = (DWRITE_FONT_STYLE)fontStyle;
     ComPtr<IDWriteFont> pWriteFont = nullptr;
-    TryTo(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, &pWriteFont));
+    Check(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, &pWriteFont));
     return ref new WriteFont(pWriteFont);
 }

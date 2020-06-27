@@ -17,7 +17,7 @@
  * \param action 一個會返回HRESULT型別的方法。
  */
 
-#define TryTo(action) {\
+#define Check(action) {\
     HRESULT __hr = (action);\
     if (!SUCCEEDED(__hr)) {\
         throw ref new COMException(__hr);\
