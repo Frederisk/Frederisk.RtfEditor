@@ -13,10 +13,7 @@ WriteFontCollection::WriteFontCollection(ComPtr<IDWriteFontCollection> pFontColl
 bool WriteFontCollection::FindFamilyName(String^ familyName, int* index) {
     uint32 familyIndex;
     BOOL exists;
-    HRESULT hr = this->pFontCollection->FindFamilyName(familyName->Data(), &familyIndex, &exists);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(this->pFontCollection->FindFamilyName(familyName->Data(), &familyIndex, &exists));
     *index = familyIndex;
     return exists != 0;
 }
@@ -27,9 +24,6 @@ int WriteFontCollection::GetFontFamilyCount() {
 
 WriteFontFamily^ WriteFontCollection::GetFontFamily(int index) {
     ComPtr<IDWriteFontFamily> pfontFamily;
-    HRESULT hr = pFontCollection->GetFontFamily(index, &pfontFamily);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(pFontCollection->GetFontFamily(index, &pfontFamily));
     return ref new WriteFontFamily(pfontFamily);
 }

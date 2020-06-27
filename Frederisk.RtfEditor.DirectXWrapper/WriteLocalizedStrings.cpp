@@ -15,18 +15,10 @@ int WriteLocalizedStrings::GetCount() {
 
 String^ WriteLocalizedStrings::GetLocaleName(int index) {
     UINT32 length = 0;
-    HRESULT hr = this->pLocalizedStrings->GetLocaleNameLength(index, &length);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(this->pLocalizedStrings->GetLocaleNameLength(index, &length));
     wchar_t* str = new (std::nothrow) wchar_t[length + 1];
-    if (str == nullptr) {
-        throw ref new COMException(E_OUTOFMEMORY);
-    }
-    hr = this->pLocalizedStrings->GetLocaleName(index, str, length + 1);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    if (str == nullptr) throw ref new COMException(E_OUTOFMEMORY);
+    TryTo(this->pLocalizedStrings->GetLocaleName(index, str, length + 1));
     String^ string = ref new String(str);
     delete[] str;
     return string;
@@ -34,18 +26,10 @@ String^ WriteLocalizedStrings::GetLocaleName(int index) {
 
 String^ WriteLocalizedStrings::GetString(int index) {
     UINT32 length = 0;
-    HRESULT hr = this->pLocalizedStrings->GetStringLength(index, &length);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(this->pLocalizedStrings->GetStringLength(index, &length));
     wchar_t* str = new (std::nothrow) wchar_t[length + 1];
-    if (str == nullptr) {
-        throw ref new COMException(E_OUTOFMEMORY);
-    }
-    hr = this->pLocalizedStrings->GetString(index, str, length + 1);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    if (str == nullptr) throw ref new COMException(E_OUTOFMEMORY);
+    TryTo(this->pLocalizedStrings->GetString(index, str, length + 1));
     String^ string = ref new String(str);
     delete[] str;
     return string;
@@ -54,10 +38,7 @@ String^ WriteLocalizedStrings::GetString(int index) {
 bool WriteLocalizedStrings::FindLocaleName(String^ localeName, int* index) {
     uint32 localeIndex = 0;
     BOOL existes = false;
-    HRESULT hr = this->pLocalizedStrings->FindLocaleName(localeName->Data(), &localeIndex, &existes);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(this->pLocalizedStrings->FindLocaleName(localeName->Data(), &localeIndex, &existes));
     *index = localeIndex;
     return existes != 0;
 }

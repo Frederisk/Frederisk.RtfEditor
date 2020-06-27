@@ -39,6 +39,6 @@ namespace Frederisk.RtfEditor.Windows.Pages {
             _fontCollection = new ObservableCollection<String>(fonts);
         }
 
-        private ObservableCollection<String> _fontCollection;
+        private readonly ObservableCollection<String> _fontCollection;
     }
 }

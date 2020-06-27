@@ -29,10 +29,7 @@ WriteFontMetrics WriteFont::GetMetrics() {
 
 bool WriteFont::HasCharacter(UINT32 unicodeValue) {
     BOOL exists = 0;
-    HRESULT hr = this->pWriteFont->HasCharacter(unicodeValue, &exists);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(pWriteFont->HasCharacter(unicodeValue, &exists));
     return exists != 0;
 }
 

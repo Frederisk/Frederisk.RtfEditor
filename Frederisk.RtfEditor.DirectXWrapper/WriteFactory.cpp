@@ -18,9 +18,6 @@ WriteFontCollection^ WriteFactory::GetSystemFontCollection() {
 
 WriteFontCollection^ WriteFactory::GetSystemFontCollection(bool checkForUpdates) {
     ComPtr<IDWriteFontCollection> pFontCollection;
-    HRESULT hr = pFactory->GetSystemFontCollection(&pFontCollection, checkForUpdates);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    TryTo(pFactory->GetSystemFontCollection(&pFontCollection, checkForUpdates));
     return ref new WriteFontCollection(pFontCollection);
 }

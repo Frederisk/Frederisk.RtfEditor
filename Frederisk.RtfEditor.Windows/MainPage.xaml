@@ -19,7 +19,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <TextBlock FontSize="48" Opacity="0.5">
             <Grid.Column>0</Grid.Column>
             <Grid.ColumnSpan>2</Grid.ColumnSpan>
@@ -28,7 +27,6 @@
                 Welcome to RTF Editor!
             </TextBlock.Text>
         </TextBlock>
-
         <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto">
             <Grid.Column>0</Grid.Column>
             <Grid.Row>1</Grid.Row>
@@ -36,7 +34,6 @@
                 <ItemsControl ItemsSource="{x:Bind ViewModule.ActionButtons}" />
             </StackPanel>
         </ScrollViewer>
-
         <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Content="{x:Bind ViewModule.MainFrame}">
             <Grid.Column>1</Grid.Column>
             <Grid.Row>1</Grid.Row>
