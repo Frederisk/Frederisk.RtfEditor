@@ -6,6 +6,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Frederisk.RtfEditor.Windows.Pages;
 
 namespace Frederisk.RtfEditor.Windows {
 
@@ -51,7 +52,7 @@ namespace Frederisk.RtfEditor.Windows {
                 // 在巡覽堆疊未還原時，巡覽至第一頁，
                 // 設定新的頁面，方式是透過傳遞必要資訊做為巡覽
                 // 參數
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(EditorPage), e.Arguments);
             }
             // 確定目前視窗是作用中
             Window.Current.Activate();

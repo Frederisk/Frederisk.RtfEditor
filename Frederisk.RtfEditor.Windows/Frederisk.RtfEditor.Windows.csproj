@@ -146,6 +146,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditorPage.xaml.cs">
+      <DependentUpon>EditorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\NewPage.xaml.cs">
       <DependentUpon>NewPage.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\EditorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\NewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,7 +232,12 @@
       <Version>2.4.2</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Frederisk.RtfEditor.DirectXWrapper\Frederisk.RtfEditor.DirectXWrapper.vcxproj">
+      <Project>{f5e89d7a-db71-4b68-a6fb-334b3e01f558}</Project>
+      <Name>Frederisk.RtfEditor.DirectXWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

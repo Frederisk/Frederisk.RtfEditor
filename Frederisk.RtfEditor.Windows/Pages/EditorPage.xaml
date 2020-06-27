@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="Frederisk.RtfEditor.Windows.Pages.EditorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Frederisk.RtfEditor.Windows.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Height="150">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Viewbox Height="40">
+                        <SymbolIcon Symbol="Paste"/>
+                    </Viewbox>
+                </Button>
+                <Button Height="60" Width="90">
+                    <StackPanel>
+                        <TextBlock Text="Paste" HorizontalAlignment="Center"/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEDDC;" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <Button Height="50" Width="50">
+                    <SymbolIcon Symbol="Cut"/>
+                </Button>
+                <Button Height="50" Width="50">
+                    <SymbolIcon Symbol="Copy"/>
+                </Button>
+                <Button Height="50" Width="50">
+                    <SymbolIcon Symbol="Delete"/>
+                </Button>
+            </StackPanel>
+            <Button Width="10" IsEnabled="False" Height="150"/>
+            <StackPanel>
+                <StackPanel Height="75" Orientation="Horizontal">
+                    <ComboBox Header="Font" IsEditable="True" Width="225"/>
+                    <ComboBox Header="Size" IsEditable="True" Width="150"/>
+
+                </StackPanel>
+                <StackPanel Height="75" Orientation="Horizontal">
+                    <ToggleButton Height="75" Width="75">
+                        <SymbolIcon Symbol="Bold"/>
+                    </ToggleButton>
+                    <ToggleButton Height="75" Width="75">
+                        <SymbolIcon Symbol="Italic"/>
+                    </ToggleButton>
+                    <ToggleButton Height="75" Width="75">
+                        <SymbolIcon Symbol="Underline"/>
+                    </ToggleButton>
+                    <ToggleButton Height="75" Width="75">
+                        <SymbolIcon Symbol="FontIncrease"/>
+                    </ToggleButton>
+                    <ToggleButton Height="75" Width="75">
+                        <SymbolIcon Symbol="FontDecrease"/>
+                    </ToggleButton>
+                </StackPanel>
+            </StackPanel>
+
+
+        </StackPanel>
+        
+        
+        
+    </Grid>
+</Page>
