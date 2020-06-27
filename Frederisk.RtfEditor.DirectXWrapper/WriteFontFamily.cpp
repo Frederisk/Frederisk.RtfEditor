@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "WriteFontFamily.h"
 
-using namespace DirectXWrapper;
+using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
 using namespace Microsoft::WRL;
 using namespace Windows::UI::Text;

@@ -12,6 +12,7 @@
     <ClCompile Include="WriteFontCollection.cpp" />
     <ClCompile Include="WriteFontFamily.cpp" />
     <ClCompile Include="WriteLocalizedStrings.cpp" />
+    <ClCompile Include="WriteFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -19,5 +20,7 @@
     <ClInclude Include="WriteFontCollection.h" />
     <ClInclude Include="WriteFontFamily.h" />
     <ClInclude Include="WriteLocalizedStrings.h" />
+    <ClInclude Include="WriteFont.h" />
+    <ClInclude Include="WriteFontMetrics.h" />
   </ItemGroup>
 </Project>

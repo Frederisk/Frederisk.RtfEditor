@@ -32,10 +32,12 @@ namespace Frederisk.RtfEditor.Windows {
             _mainFrame = new Frame();
             _mainFrame.Navigate(typeof(StartPage));
             var tButtons = new ObservableCollection<MainPageActionButton> {
+#pragma warning disable CA1303 // 不要將常值當做已當地語系化的參數傳遞
                 new MainPageActionButton{Width = 120, Height = 120, Text = "Start", Symbol = Symbol.Home, IsEnabled = false, IsChecked = true, PageType = typeof(StartPage)},
                 new MainPageActionButton{Width = 120, Height = 120, Text = "New", Symbol = Symbol.NewFolder, PageType = typeof(NewPage)},
                 new MainPageActionButton{Width = 120, Height = 120, Text = "Open", Symbol = Symbol.OpenFile, PageType = typeof(OpenPage)},
                 new MainPageActionButton{Width = 120, Height = 120, Text = "Setting", Symbol = Symbol.Setting, PageType = typeof(SettingPage)}
+#pragma warning restore CA1303 // 不要將常值當做已當地語系化的參數傳遞
             };
             foreach (var item in tButtons) {
                 item.Tapped += (sender, args) => {

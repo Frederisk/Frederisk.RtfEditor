@@ -1,11 +1,11 @@
 #pragma once
 
 #include "WriteLocalizedStrings.h"
-// #include "WriteFont.h"
+#include "WriteFont.h"
 
-namespace DirectXWrapper {
+namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFontFamily sealed {
-    public:
+    private:
         Microsoft::WRL::ComPtr<IDWriteFontFamily> pFontFamily;
     internal:
         WriteFontFamily(Microsoft::WRL::ComPtr<IDWriteFontFamily> pFontFamily);

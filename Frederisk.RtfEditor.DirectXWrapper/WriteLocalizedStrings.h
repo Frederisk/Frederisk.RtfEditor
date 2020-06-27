@@ -1,6 +1,6 @@
 #pragma once
 
-namespace DirectXWrapper {
+namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteLocalizedStrings sealed {
     private:
         Microsoft::WRL::ComPtr<IDWriteLocalizedStrings> pLocalizedStrings;

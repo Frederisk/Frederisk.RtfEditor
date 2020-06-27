@@ -2,7 +2,7 @@
 
 #include "WriteFontCollection.h"
 
-namespace DirectXWrapper {
+namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFactory sealed {
     private:
         Microsoft::WRL::ComPtr<IDWriteFactory> pFactory;

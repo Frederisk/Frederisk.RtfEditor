@@ -2,7 +2,7 @@
 #include "WriteFontCollection.h"
 #include "WriteFontFamily.h"
 
-using namespace DirectXWrapper;
+using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
 using namespace Microsoft::WRL;
 
@@ -32,5 +32,4 @@ WriteFontFamily^ WriteFontCollection::GetFontFamily(int index) {
         throw ref new COMException(hr);
     }
     return ref new WriteFontFamily(pfontFamily);
-
 }

@@ -2,7 +2,7 @@
 
 #include "WriteFontFamily.h"
 
-namespace DirectXWrapper {
+namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFontCollection sealed {
     private:
         Microsoft::WRL::ComPtr<IDWriteFontCollection> pFontCollection;
