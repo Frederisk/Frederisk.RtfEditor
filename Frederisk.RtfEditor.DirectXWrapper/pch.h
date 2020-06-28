@@ -10,6 +10,7 @@
 #include <windows.ui.xaml.media.dxinterop.h>
 #include <dwrite.h>
 
+
 // ReSharper disable once CppInconsistentNaming
 // ReSharper disable once CommentTypo
 /**

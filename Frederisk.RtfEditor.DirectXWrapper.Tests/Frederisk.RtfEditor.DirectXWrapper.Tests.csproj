@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{32B4C50B-A95A-4AB2-BCDC-8292FB0D89D3}</ProjectGuid>
+    <ProjectGuid>{F7DB8A0D-160A-4EEB-82B7-7EDFCCE0D985}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Frederisk.RtfEditor.DirectXWrapper.Tests</RootNamespace>
     <AssemblyName>Frederisk.RtfEditor.DirectXWrapper.Tests</AssemblyName>
-    <DefaultLanguage>zh-TW</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>

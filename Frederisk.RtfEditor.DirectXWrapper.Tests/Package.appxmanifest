@@ -5,11 +5,11 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="db960e84-337b-4f88-8570-0f4db0d11a39"
+  <Identity Name="405c4df0-bfab-486d-b01f-bce3704abf0f"
             Publisher="CN=Frederisk"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="db960e84-337b-4f88-8570-0f4db0d11a39" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="405c4df0-bfab-486d-b01f-bce3704abf0f" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Frederisk.RtfEditor.DirectXWrapper.Tests</DisplayName>
