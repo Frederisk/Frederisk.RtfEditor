@@ -3,16 +3,16 @@
 
 using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
-using namespace Microsoft::WRL;
+// using namespace Microsoft::WRL;
 using namespace Windows::UI::Text;
 
-WriteFontFamily::WriteFontFamily(ComPtr<IDWriteFontFamily> pFontFamily) {
+WriteFontFamily::WriteFontFamily(winrt::com_ptr<IDWriteFontFamily> pFontFamily) {
     this->pFontFamily = pFontFamily;
 }
 
 WriteLocalizedStrings^ WriteFontFamily::GetFamilyNames() {
-    ComPtr<IDWriteLocalizedStrings> pFamilyNames;
-    Check(pFontFamily->GetFamilyNames(&pFamilyNames));
+    winrt::com_ptr<IDWriteLocalizedStrings> pFamilyNames;
+    Check(pFontFamily->GetFamilyNames(pFamilyNames.put()));
     return ref new WriteLocalizedStrings(pFamilyNames);
 }
 
@@ -54,7 +54,7 @@ WriteFont^ WriteFontFamily::GetFirstMatchingFont(FontWeight fontWeight, FontStre
 
     DWRITE_FONT_STRETCH writeFontStretch = (DWRITE_FONT_STRETCH)fontStretch;
     DWRITE_FONT_STYLE writeFontStyle = (DWRITE_FONT_STYLE)fontStyle;
-    ComPtr<IDWriteFont> pWriteFont = nullptr;
-    Check(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, &pWriteFont));
+    winrt::com_ptr<IDWriteFont> pWriteFont = nullptr;
+    Check(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, pWriteFont.put()));
     return ref new WriteFont(pWriteFont);
 }

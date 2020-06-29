@@ -3,9 +3,9 @@
 namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteLocalizedStrings sealed {
     private:
-        Microsoft::WRL::ComPtr<IDWriteLocalizedStrings> pLocalizedStrings;
+        winrt::com_ptr<IDWriteLocalizedStrings> pLocalizedStrings;
     internal:
-        WriteLocalizedStrings(Microsoft::WRL::ComPtr<IDWriteLocalizedStrings> pLocalizedStrings);
+        WriteLocalizedStrings(winrt::com_ptr<IDWriteLocalizedStrings> pLocalizedStrings);
     public:
         int GetCount();
         Platform::String^ GetLocaleName(int index);

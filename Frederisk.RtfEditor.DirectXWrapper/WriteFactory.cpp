@@ -3,13 +3,11 @@
 
 using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
-using namespace Microsoft::WRL;
+using namespace winrt;
+// using namespace Microsoft::WRL;
 
 WriteFactory::WriteFactory() {
-    HRESULT hr = DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), &pFactory);
-    if (!SUCCEEDED(hr)) {
-        throw ref new COMException(hr);
-    }
+    Check(DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), (IUnknown**)(get_abi(pFactory.put()))));
 }
 
 WriteFontCollection^ WriteFactory::GetSystemFontCollection() {
@@ -17,7 +15,7 @@ WriteFontCollection^ WriteFactory::GetSystemFontCollection() {
 }
 
 WriteFontCollection^ WriteFactory::GetSystemFontCollection(bool checkForUpdates) {
-    ComPtr<IDWriteFontCollection> pFontCollection;
-    Check(pFactory->GetSystemFontCollection(&pFontCollection, checkForUpdates));
+    com_ptr<IDWriteFontCollection> pFontCollection;
+    Check(pFactory->GetSystemFontCollection(pFontCollection.put(), checkForUpdates));
     return ref new WriteFontCollection(pFontCollection);
 }

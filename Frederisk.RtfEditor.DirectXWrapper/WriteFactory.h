@@ -11,7 +11,7 @@ namespace Frederisk_RtfEditor_DirectXWrapper {
         /// <summary>
         /// IDWriteFactory物件。
         /// </summary>
-        Microsoft::WRL::ComPtr<IDWriteFactory> pFactory;
+        winrt::com_ptr<IDWriteFactory> pFactory;
     public:
         /// <summary>
         /// WriteFactory的無參構造器。

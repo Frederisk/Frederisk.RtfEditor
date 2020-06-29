@@ -6,9 +6,9 @@
 namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFontFamily sealed {
     private:
-        Microsoft::WRL::ComPtr<IDWriteFontFamily> pFontFamily;
+        winrt::com_ptr<IDWriteFontFamily> pFontFamily;
     internal:
-        WriteFontFamily(Microsoft::WRL::ComPtr<IDWriteFontFamily> pFontFamily);
+        WriteFontFamily(winrt::com_ptr<IDWriteFontFamily> pFontFamily);
     public:
         WriteLocalizedStrings^ GetFamilyNames();
         WriteFont^ GetFirstMatchingFont(Windows::UI::Text::FontWeight fontWeight, Windows::UI::Text::FontStretch fontStretch, Windows::UI::Text::FontStyle FontStyle);
