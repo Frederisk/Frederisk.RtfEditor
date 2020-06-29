@@ -6,13 +6,13 @@ using namespace Platform;
 // using namespace Microsoft::WRL;
 using namespace Windows::UI::Text;
 
-WriteFontFamily::WriteFontFamily(winrt::com_ptr<IDWriteFontFamily> pFontFamily) {
+WriteFontFamily::WriteFontFamily(Microsoft::WRL::ComPtr<IDWriteFontFamily> pFontFamily) {
     this->pFontFamily = pFontFamily;
 }
 
 WriteLocalizedStrings^ WriteFontFamily::GetFamilyNames() {
-    winrt::com_ptr<IDWriteLocalizedStrings> pFamilyNames;
-    Check(pFontFamily->GetFamilyNames(pFamilyNames.put()));
+    Microsoft::WRL::ComPtr<IDWriteLocalizedStrings> pFamilyNames;
+    Check(pFontFamily->GetFamilyNames(&pFamilyNames));
     return ref new WriteLocalizedStrings(pFamilyNames);
 }
 
@@ -54,7 +54,7 @@ WriteFont^ WriteFontFamily::GetFirstMatchingFont(FontWeight fontWeight, FontStre
 
     DWRITE_FONT_STRETCH writeFontStretch = (DWRITE_FONT_STRETCH)fontStretch;
     DWRITE_FONT_STYLE writeFontStyle = (DWRITE_FONT_STYLE)fontStyle;
-    winrt::com_ptr<IDWriteFont> pWriteFont = nullptr;
-    Check(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, pWriteFont.put()));
+    Microsoft::WRL::ComPtr<IDWriteFont> pWriteFont = nullptr;
+    Check(pFontFamily->GetFirstMatchingFont(writeFontWeight, writeFontStretch, writeFontStyle, &pWriteFont));
     return ref new WriteFont(pWriteFont);
 }

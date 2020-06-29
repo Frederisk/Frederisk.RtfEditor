@@ -64,7 +64,7 @@
                 <Button Width="10" IsEnabled="False" Height="150" />-->
                 <StackPanel>
                     <StackPanel Height="75" Orientation="Horizontal">
-                        <ComboBox Name="font_ComBox" Header="Font" IsEditable="False" Width="225" Height="75" ItemsSource="{x:Bind Path=ViewModule.FontCollection}" SelectedItem="{x:Bind Path=ViewModule, Mode=OneWay}">
+                        <ComboBox Name="font_ComBox" Header="Font" IsEditable="False" Width="225" Height="75" ItemsSource="{x:Bind Path=ViewModule.FontCollection}" SelectedItem="{x:Bind Path=ViewModule.FontSelected, Mode=OneWay}">
                             <!--<ComboBox.ItemTemplate>
                                 <DataTemplate x:DataType="FontFamily">
                                     <StackPanel Tag="{x:Bind Path=Source}">

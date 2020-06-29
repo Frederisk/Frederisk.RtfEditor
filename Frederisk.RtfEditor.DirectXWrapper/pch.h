@@ -9,7 +9,6 @@
 #include <d3d11_1.h>
 #include <windows.ui.xaml.media.dxinterop.h>
 #include <dwrite.h>
-#include <winrt/base.h>
 
 
 // ReSharper disable once CppInconsistentNaming

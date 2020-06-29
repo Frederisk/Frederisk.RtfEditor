@@ -5,9 +5,9 @@
 namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFontCollection sealed {
     private:
-        winrt::com_ptr<IDWriteFontCollection> pFontCollection;
+        Microsoft::WRL::ComPtr<IDWriteFontCollection> pFontCollection;
     internal:
-        WriteFontCollection(winrt::com_ptr<IDWriteFontCollection> pFontCollection);
+        WriteFontCollection(Microsoft::WRL::ComPtr<IDWriteFontCollection> pFontCollection);
     public:
         bool FindFamilyName(Platform::String^ familyName, int* index);
         int GetFontFamilyCount();

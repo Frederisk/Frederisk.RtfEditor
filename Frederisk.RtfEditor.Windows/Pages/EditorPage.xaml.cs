@@ -181,6 +181,7 @@ namespace Frederisk.RtfEditor.Windows.Pages {
             IsAlignCenter = selection?.ParagraphFormat.Alignment is ParagraphAlignment.Center;
             IsAlignRight = selection?.ParagraphFormat.Alignment is ParagraphAlignment.Right;
             FontSize = selection?.CharacterFormat.Size.ToString(CultureInfo.CurrentCulture);
+            FontSelected = FontCollection.First(r => String.CompareOrdinal(r.Tag.ToString(), selection?.CharacterFormat.Name) is 0);
         }
 
         //public sealed class FormatConverter : IValueConverter {

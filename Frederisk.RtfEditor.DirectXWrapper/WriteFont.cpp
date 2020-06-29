@@ -3,10 +3,10 @@
 
 using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
-using namespace winrt;
 // using namespace Microsoft::WRL;
+using namespace Microsoft::WRL;
 
-WriteFont::WriteFont(com_ptr<IDWriteFont> pWriteFont) {
+WriteFont::WriteFont(ComPtr<IDWriteFont> pWriteFont) {
     this->pWriteFont = pWriteFont;
 }
 

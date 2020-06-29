@@ -3,10 +3,10 @@
 
 using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
-using namespace winrt;
+using namespace Microsoft::WRL;
 // using namespace Microsoft::WRL;
 
-WriteLocalizedStrings::WriteLocalizedStrings(com_ptr<IDWriteLocalizedStrings> pLocalizedStrings) {
+WriteLocalizedStrings::WriteLocalizedStrings(ComPtr<IDWriteLocalizedStrings> pLocalizedStrings) {
     this->pLocalizedStrings = pLocalizedStrings;
 }
 

@@ -4,10 +4,10 @@
 
 using namespace Frederisk_RtfEditor_DirectXWrapper;
 using namespace Platform;
-using namespace winrt;
+using namespace Microsoft::WRL;
 // using namespace Microsoft::WRL;
 
-WriteFontCollection::WriteFontCollection(com_ptr<IDWriteFontCollection> pFontCollection) {
+WriteFontCollection::WriteFontCollection(ComPtr<IDWriteFontCollection> pFontCollection) {
     this->pFontCollection = pFontCollection;
 }
 
@@ -24,7 +24,7 @@ int WriteFontCollection::GetFontFamilyCount() {
 }
 
 WriteFontFamily^ WriteFontCollection::GetFontFamily(int index) {
-    com_ptr<IDWriteFontFamily> pfontFamily;
-    Check(pFontCollection->GetFontFamily(index, pfontFamily.put()));
+    ComPtr<IDWriteFontFamily> pfontFamily;
+    Check(pFontCollection->GetFontFamily(index, &pfontFamily));
     return ref new WriteFontFamily(pfontFamily);
 }

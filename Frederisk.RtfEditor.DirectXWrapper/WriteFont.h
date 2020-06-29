@@ -5,9 +5,9 @@
 namespace Frederisk_RtfEditor_DirectXWrapper {
     public ref class WriteFont sealed {
     private:
-        winrt::com_ptr<IDWriteFont> pWriteFont;
+        Microsoft::WRL::ComPtr<IDWriteFont> pWriteFont;
     internal:
-        WriteFont(winrt::com_ptr<IDWriteFont> pWriteFont);
+        WriteFont(Microsoft::WRL::ComPtr<IDWriteFont> pWriteFont);
     public:
         bool HasCharacter(UINT32 unicodeValue);
         bool IsSymbolFont();
