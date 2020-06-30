@@ -1,11 +1,8 @@
 ﻿#nullable enable
 
 using System;
-using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
 
 // 使用者控制項項目範本記載於 https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -61,6 +58,5 @@ namespace Frederisk.RtfEditor.Windows.Controllers {
         #endregion DependencyProperty
 
         public Type? PageType { get; set; }
-
     }
 }

@@ -137,6 +137,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BindableBase.cs" />
+    <Compile Include="Controllers\EditorPageColorSelectorControl.xaml.cs">
+      <DependentUpon>EditorPageColorSelectorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\MainPageActionButton.xaml.cs">
       <DependentUpon>MainPageActionButton.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controllers\EditorPageColorSelectorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controllers\MainPageActionButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -9,17 +9,17 @@
     d:DesignWidth="120"
     d:DesignHeight="120">
 
-    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{ThemeResource AppBarBorderThemeBrush}" >
+    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{ThemeResource AppBarBorderThemeBrush}">
         <!--IsChecked="{x:Bind Path=IsChecked, Mode=TwoWay}" -->
-        
+
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="12"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <SymbolIcon Symbol="{x:Bind Path=Symbol, Mode=OneTime}">
                 <Grid.Column>0</Grid.Column>

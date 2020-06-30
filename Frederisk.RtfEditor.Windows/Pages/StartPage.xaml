@@ -22,7 +22,7 @@
                     <GridView ItemsSource="{x:Bind ViewModule.Templates}" SelectionMode="None">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="local:RtfTemplate">
-                                <myControls:StartPageCreateButton Symbol="{x:Bind Path=ViewSymbol}" Text="{x:Bind Path=Name}" IsEnabled="{x:Bind Path= IsAvailable}" />
+                                <myControls:StartPageCreateButton Symbol="{x:Bind Path=ViewSymbol}" Text="{x:Bind Path=Name}" IsEnabled="{x:Bind Path= IsAvailable}"/>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>

@@ -6,8 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:myControls="using:Frederisk.RtfEditor.Windows.Controllers"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="{x:Bind Path=VisualViewModule.PageTheme}">
     <Grid>
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
@@ -17,13 +19,13 @@
         </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Auto" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Hidden">
             <StackPanel Orientation="Horizontal" Height="150">
-                <!--<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Button Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Button Height="90" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False">
                         <Viewbox Height="40">
                             <SymbolIcon Symbol="Paste" />
                         </Viewbox>
                     </Button>
-                    <Button Height="60" Width="90">
+                    <Button Height="60" Width="90" IsEnabled="False">
                         <Button.Content>
                             <StackPanel>
                                 <TextBlock Text="Paste" HorizontalAlignment="Center" />
@@ -51,37 +53,26 @@
                     </Button>
                 </StackPanel>
                 <StackPanel>
-                    <Button Height="50" Width="50">
+                    <Button Height="50" Width="50" IsEnabled="False">
                         <SymbolIcon Symbol="Cut" />
                     </Button>
-                    <Button Height="50" Width="50">
+                    <Button Height="50" Width="50" IsEnabled="False">
                         <SymbolIcon Symbol="Copy" />
                     </Button>
-                    <Button Height="50" Width="50">
+                    <Button Height="50" Width="50" IsEnabled="False">
                         <SymbolIcon Symbol="Delete" />
                     </Button>
                 </StackPanel>
-                <Button Width="10" IsEnabled="False" Height="150" />-->
+                <Button Width="10" IsEnabled="False" Height="150" />
                 <StackPanel>
                     <StackPanel Height="75" Orientation="Horizontal">
-                        <ComboBox Name="font_ComBox" Header="Font" IsEditable="False" Width="225" Height="75" ItemsSource="{x:Bind Path=ViewModule.FontCollection}" SelectedItem="{x:Bind Path=ViewModule.FontSelected, Mode=OneWay}">
-                            <!--<ComboBox.ItemTemplate>
-                                <DataTemplate x:DataType="FontFamily">
-                                    <StackPanel Tag="{x:Bind Path=Source}">
-                                        <TextBlock Text="{x:Bind Path=Source}" FontFamily="{x:Bind}" />
-                                        <TextBlock Text="{x:Bind Path=Source}" HorizontalTextAlignment="Left" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>-->
-                        </ComboBox>
+                        <ComboBox Name="font_ComBox" Header="Font" IsEditable="False" Width="225" Height="75" ItemsSource="{x:Bind Path=ViewModule.FontCollection}" SelectedItem="{x:Bind Path=ViewModule.FontSelected, Mode=OneWay}" SelectionChanged="Font_ComBox_OnSelectionChanged" />
                         <StackPanel>
                             <TextBlock Height="23">Text</TextBlock>
-                            <TextBox InputScope="Number" MaxLength="4" Width="150" FontSize="29" Text="{x:Bind Path=ViewModule.FontSize, Mode=TwoWay}"/>
+                            <TextBox InputScope="Number" MaxLength="4" Width="150" FontSize="29" Text="{x:Bind Path=ViewModule.FontSize, Mode=TwoWay}" TextChanged="TextBox_OnTextChanged" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Height="75" Orientation="Horizontal">
-                        <StackPanel.Resources>
-                        </StackPanel.Resources>
                         <ToggleButton Height="75" Width="75" Click="ToggleButton_OnClick" Tag="Bold" IsChecked="{x:Bind Path=ViewModule.IsBold, Mode=OneWay}">
                             <SymbolIcon Symbol="Bold" />
                         </ToggleButton>
@@ -91,10 +82,10 @@
                         <ToggleButton Height="75" Width="75" Click="ToggleButton_OnClick" Tag="Underline" IsChecked="{x:Bind Path=ViewModule.IsUnderline, Mode=OneWay}">
                             <SymbolIcon Symbol="Underline" />
                         </ToggleButton>
-                        <Button Height="75" Width="75">
+                        <Button Height="75" Width="75" Tag="FontIncrease" Click="{x:Bind Path=ViewModule.ButtonBase_OnClick}">
                             <SymbolIcon Symbol="FontIncrease" />
                         </Button>
-                        <Button Height="75" Width="75">
+                        <Button Height="75" Width="75" Tag="FontDecrease" Click="{x:Bind Path=ViewModule.ButtonBase_OnClick}">
                             <SymbolIcon Symbol="FontDecrease" />
                         </Button>
                     </StackPanel>
@@ -102,7 +93,7 @@
                 <Button Width="10" IsEnabled="False" Height="150" />
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <ToggleButton Width="75" Height="75" Tag="AlignCenter" IsChecked="{x:Bind Path=ViewModule.IsAlignCenter, Mode=OneWay}" Checked="ToggleButton_OnClick" >
+                        <ToggleButton Width="75" Height="75" Tag="AlignCenter" IsChecked="{x:Bind Path=ViewModule.IsAlignCenter, Mode=OneWay}" Checked="ToggleButton_OnClick">
                             <SymbolIcon Symbol="AlignCenter" />
                         </ToggleButton>
                         <ToggleButton Width="75" Height="75" Tag="AlignLeft" IsChecked="{x:Bind Path=ViewModule.IsAlignLeft, Mode=OneWay}" Checked="ToggleButton_OnClick">
@@ -113,89 +104,35 @@
                         </ToggleButton>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel.Resources>
-                            <Style TargetType="Rectangle" x:Key="colorRectangle_Style">
-                                <Setter Property="Width" Value="24" />
-                                <Setter Property="Height" Value="24" />
-                            </Style>
+                        <!--<StackPanel.Resources>
                             <Style TargetType="DropDownButton">
                                 <Setter Property="VerticalAlignment" Value="Stretch" />
                                 <Setter Property="HorizontalAlignment" Value="Stretch" />
                             </Style>
-                            <Style TargetType="Button" x:Key="colorButton_Style">
-                                <Setter Property="Padding" Value="0" />
-                                <Setter Property="MinWidth" Value="0" />
-                                <Setter Property="MinHeight" Value="0" />
-                            </Style>
                         </StackPanel.Resources>
-                        <Button Height="75" Width="75">
-                            <SymbolIcon Symbol="FontColor"></SymbolIcon>
+                        <Button Name="fontColor_Button" Height="75" Width="75" Click="Color_Button_OnClick">
+                            <SymbolIcon Symbol="FontColor"/>
+                        </Button>-->
+                        <!--<myControls:EditorPageColorSelectorControl Height="75" Width="37.5" Background="{x:Bind Path=ViewModule.FontColorBrush, Mode=TwoWay}" />-->
+                        <Button Name="backgroundColor_Button" Height="75" Width="60" Click="Color_Button_OnClick">
+                            <SymbolIcon Symbol="Highlight"/>
                         </Button>
-                        <DropDownButton Height="75" Width="37.5">
-                            <DropDownButton.Flyout>
-                                <Flyout Placement="Bottom">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <GridView ItemsSource="{x:Bind Path=ViewModule.BaseColorBrushes}" SelectionMode="None">
-                                            <GridView.ItemTemplate>
-                                                <DataTemplate x:DataType="SolidColorBrush">
-                                                    <Button Style="{StaticResource colorButton_Style}">
-                                                        <Rectangle Fill="{x:Bind}" Style="{StaticResource colorRectangle_Style}" />
-                                                    </Button>
-                                                </DataTemplate>
-                                            </GridView.ItemTemplate>
-                                        </GridView>
-                                        <DropDownButton Content="More Color">
-                                            <Grid.Row>1</Grid.Row>
-                                            <DropDownButton.Flyout>
-                                                <Flyout Placement="Bottom">
-                                                </Flyout>
-                                            </DropDownButton.Flyout>
-                                        </DropDownButton>
-                                    </Grid>
-                                </Flyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
-                        <Button Height="75" Width="75">
-                            <SymbolIcon Symbol="Highlight"></SymbolIcon>
+                        <myControls:EditorPageColorSelectorControl Height="75" Width="45" Background="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=TwoWay}"/>
+                        <Button Name="save_Button" Height="75" Width="60" Click="Save_Button_OnClick">
+                            <SymbolIcon Symbol="Save"/>
                         </Button>
-                        <DropDownButton Height="75" Width="37.5">
-                            <DropDownButton.Flyout>
-                                <Flyout Placement="Bottom">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <GridView ItemsSource="{x:Bind Path=ViewModule.BaseColorBrushes}" SelectionMode="None">
-                                            <GridView.ItemTemplate>
-                                                <DataTemplate x:DataType="SolidColorBrush">
-                                                    <Button Style="{StaticResource colorButton_Style}">
-                                                        <Rectangle Fill="{x:Bind}" Style="{StaticResource colorRectangle_Style}" />
-                                                    </Button>
-                                                </DataTemplate>
-                                            </GridView.ItemTemplate>
-                                        </GridView>
-                                        <DropDownButton Content="More Color">
-                                            <Grid.Row>1</Grid.Row>
-                                            <DropDownButton.Flyout>
-                                                <Flyout Placement="Bottom">
-                                                </Flyout>
-                                            </DropDownButton.Flyout>
-                                        </DropDownButton>
-                                    </Grid>
-                                </Flyout>
-                            </DropDownButton.Flyout>
-                        </DropDownButton>
+                        <Button Name="load_Button" Height="75" Width="60" Click="Open_Button_Click">
+                            <SymbolIcon Symbol="OpenLocal"/>
+                        </Button>
+
                     </StackPanel>
                 </StackPanel>
+
             </StackPanel>
         </ScrollViewer>
-        <RichEditBox Name="main_RichEditBox" SelectionHighlightColorWhenNotFocused="{StaticResource TextSelectionHighlightColorThemeBrush}" SelectionChanged="{x:Bind Path=ViewModule.OnContentChanged}" TextChanged="{x:Bind Path=ViewModule.OnContentChanged}">
+        <RichEditBox Name="main_RichEditBox" SelectionHighlightColorWhenNotFocused="{StaticResource TextSelectionHighlightColorThemeBrush}" SelectionChanged="{x:Bind Path=ViewModule.OnContentChanged}" TextChanged="{x:Bind Path=ViewModule.OnContentChanged}" TextChanging="Main_RichEditBox_OnTextChanging">
             <Grid.Row>1</Grid.Row>
         </RichEditBox>
+
     </Grid>
 </Page>

@@ -12,7 +12,7 @@ namespace Frederisk.RtfEditor.Windows {
     /// 實現<see cref="INotifyPropertyChanged"/>的簡化模型。
     /// </summary>
     [WebHostHidden]
-    public abstract class BindableBase:INotifyPropertyChanged {
+    public abstract class BindableBase : INotifyPropertyChanged {
 
         /// <summary>
         /// 屬性更改通知的多播事件。
@@ -29,7 +29,8 @@ namespace Frederisk.RtfEditor.Windows {
         /// 此值是可選的，可以在支援CallerMemberName的編譯器調用時自動提供。</param>
         /// <returns>如果值更改為true，則如果現有值與所需值匹配，則為false。</returns>
         protected Boolean SetProperty<T>(ref T storage, T value, [CallerMemberName] String? propertyName = null) {
-            if (Equals(storage, value)) return false;
+            if (Equals(storage, value))
+                return false;
             storage = value;
             OnPropertyChanged(propertyName);
             return true;

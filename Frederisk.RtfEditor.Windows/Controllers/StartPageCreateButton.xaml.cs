@@ -3,6 +3,7 @@
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Frederisk.RtfEditor.Windows.Pages;
 
 // 使用者控制項項目範本記載於 https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -43,5 +44,11 @@ namespace Frederisk.RtfEditor.Windows.Controllers {
             );
 
         #endregion DependencyProperty
+
+        private void ButtonBase_OnClick(Object sender, RoutedEventArgs e) {
+            if (Window.Current.Content is Frame rootFrame) {
+                rootFrame.Navigate(typeof(EditorPage), sender);
+            }
+        }
     }
 }

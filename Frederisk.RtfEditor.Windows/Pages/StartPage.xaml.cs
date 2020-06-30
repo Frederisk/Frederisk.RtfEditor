@@ -1,7 +1,6 @@
 ﻿#nullable enable
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
@@ -24,6 +23,9 @@ namespace Frederisk.RtfEditor.Windows.Pages {
             this.Frame.Navigate(type);
         }
 
+        /// <summary>
+        /// 視圖模型。
+        /// </summary>
         public StartPageViewModule ViewModule { get; set; }
     }
 
@@ -61,7 +63,7 @@ namespace Frederisk.RtfEditor.Windows.Pages {
         public ObservableCollection<RtfTemplate> Templates {
             // ReSharper disable once ArrangeAccessorOwnerBody
             get => _templates;
-           // set => SetProperty(ref _templates, value);
+            // set => SetProperty(ref _templates, value);
         }
     }
 }

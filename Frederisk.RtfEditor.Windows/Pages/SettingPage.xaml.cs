@@ -1,27 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // 空白頁項目範本已記錄在 https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Frederisk.RtfEditor.Windows.Pages {
+
     /// <summary>
     /// 可以在本身使用或巡覽至框架內的空白頁面。
     /// </summary>
     public sealed partial class SettingPage : Page {
+
         public SettingPage() {
             this.InitializeComponent();
+            this.VisualViewModule = App.VisualViewModule ?? throw new Exception();
+        }
+
+        public VisualEffectViewModule VisualViewModule { get; set; }
+
+    }
+
+    public class ElementThemeToBoolConverter : IValueConverter {
+
+        public Object Convert(Object value, Type targetType, Object parameter, String language) {
+            if (!(value is ElementTheme theme)) {
+                throw new ArgumentException("");
+            }
+            return (ElementTheme?)theme == ElementTheme.Light;
+        }
+
+        public Object ConvertBack(Object value, Type targetType, Object parameter, String language) {
+            if (!(value is Boolean isLight)) {
+                throw new ArgumentException("");
+            }
+            return (Boolean)isLight ? ElementTheme.Light : ElementTheme.Dark;
         }
     }
+
+
 }

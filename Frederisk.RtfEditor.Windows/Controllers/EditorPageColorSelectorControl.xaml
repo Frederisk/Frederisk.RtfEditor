@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="Frederisk.RtfEditor.Windows.Controllers.EditorPageColorSelectorControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Frederisk.RtfEditor.Windows.Controllers"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="30"
+    d:DesignWidth="40" Background="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=OneWay}">
+    <UserControl.Resources>
+        <local:SolidColorBrushToColorConverter x:Key="solidColorBrushToColorConverter"></local:SolidColorBrushToColorConverter>
+    </UserControl.Resources>
+    <DropDownButton Background="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <DropDownButton.Flyout>
+            <Flyout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <GridView ItemsSource="{x:Bind Path=ViewModule.ColorButtons}" SelectionMode="None"/>
+                    <DropDownButton Content="More Color">
+                        <Grid.Row>1</Grid.Row>
+                    </DropDownButton>
+                    <ColorPicker IsMoreButtonVisible="True" IsColorSliderVisible="True" IsColorChannelTextInputVisible="True" IsHexInputVisible="True" Color="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=OneWay, Converter={StaticResource solidColorBrushToColorConverter}}">
+                        <Grid.Row>1</Grid.Row>
+                    </ColorPicker>
+                </Grid>
+            </Flyout>
+        </DropDownButton.Flyout>
+    </DropDownButton>
+</UserControl>

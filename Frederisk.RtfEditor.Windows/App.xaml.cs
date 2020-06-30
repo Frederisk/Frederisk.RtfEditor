@@ -1,12 +1,12 @@
 ﻿#nullable enable
 
+using Frederisk.RtfEditor.Windows.Pages;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Frederisk.RtfEditor.Windows.Pages;
 
 namespace Frederisk.RtfEditor.Windows {
 
@@ -15,6 +15,8 @@ namespace Frederisk.RtfEditor.Windows {
     /// </summary>
     sealed partial class App : Application {
 
+        public static VisualEffectViewModule? VisualViewModule { get; set; }
+
         /// <summary>
         /// 初始化單一應用程式物件。這是第一行執行之撰寫程式碼，
         /// 而且其邏輯相當於 main() 或 WinMain()。
@@ -22,6 +24,7 @@ namespace Frederisk.RtfEditor.Windows {
         public App() {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            VisualViewModule = new VisualEffectViewModule();
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace Frederisk.RtfEditor.Windows {
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e?.PreviousExecutionState == ApplicationExecutionState.Terminated) {
-                    //TODO: 從之前暫停的應用程式載入狀態
+                    // TODO: 從之前暫停的應用程式載入狀態
                 }
 
                 // 將框架放在目前視窗中
@@ -52,7 +55,7 @@ namespace Frederisk.RtfEditor.Windows {
                 // 在巡覽堆疊未還原時，巡覽至第一頁，
                 // 設定新的頁面，方式是透過傳遞必要資訊做為巡覽
                 // 參數
-                rootFrame.Navigate(typeof(EditorPage), e.Arguments);
+                rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
             // 確定目前視窗是作用中
             Window.Current.Activate();
@@ -80,4 +83,14 @@ namespace Frederisk.RtfEditor.Windows {
             deferral.Complete();
         }
     }
+
+    public sealed class VisualEffectViewModule : BindableBase {
+        private ElementTheme _pageTheme;
+
+        public ElementTheme PageTheme {
+            get => _pageTheme;
+            set => SetProperty(ref _pageTheme, value);
+        }
+    }
+
 }

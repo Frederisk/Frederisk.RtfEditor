@@ -8,7 +8,8 @@
     xmlns:myControls="using:Frederisk.RtfEditor.Windows.Controllers"
     xmlns:myPage="using:Frederisk.RtfEditor.Windows.Pages"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+    RequestedTheme="{x:Bind Path=VisualViewModule.PageTheme, Mode=TwoWay}">
 
     <Grid>
         <Grid.ColumnDefinitions>

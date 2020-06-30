@@ -1,13 +1,13 @@
 ﻿#nullable enable
 
 using System;
-using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 using Frederisk.RtfEditor.Windows.Controllers;
 using Frederisk.RtfEditor.Windows.Pages;
-using Microsoft.Toolkit.Extensions;
+using System.Collections.ObjectModel;
 using System.Linq;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
 // 空白頁項目範本已記錄在 https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x404
 
@@ -21,13 +21,20 @@ namespace Frederisk.RtfEditor.Windows {
         public MainPage() {
             this.InitializeComponent();
             this.ViewModule = new MainPageViewModule();
+            this.VisualViewModule = App.VisualViewModule ?? throw new Exception();
         }
 
+        /// <summary>
+        /// 視圖模型。
+        /// </summary>
         // ReSharper disable once MemberCanBePrivate.Global
         public MainPageViewModule ViewModule { get; set; }
+
+        public VisualEffectViewModule VisualViewModule { get; set; }
     }
 
     public sealed class MainPageViewModule : BindableBase {
+
         public MainPageViewModule() {
             _mainFrame = new Frame();
             _mainFrame.Navigate(typeof(StartPage));
@@ -41,17 +48,19 @@ namespace Frederisk.RtfEditor.Windows {
             };
             foreach (var item in tButtons) {
                 item.Tapped += (sender, args) => {
-                    if (!(sender is MainPageActionButton b)) return;
+                    if (!(sender is MainPageActionButton b))
+                        return;
                     this._mainFrame.Navigate(b.PageType);
                     tButtons.ToList().ForEach(i => {
-                        if (i == b) return;
+                        if (i == b)
+                            return;
                         i.IsEnabled = true;
                     });
                     b.IsEnabled = false;
                 };
             }
 
-            _actionButtons = tButtons;
+            ActionButtons = tButtons;
         }
 
         private Frame _mainFrame;
@@ -61,11 +70,7 @@ namespace Frederisk.RtfEditor.Windows {
             set => SetProperty(ref _mainFrame, value);
         }
 
-        private readonly ObservableCollection<MainPageActionButton> _actionButtons;
-
-        public ObservableCollection<MainPageActionButton> ActionButtons => _actionButtons;
-
-
+        public ObservableCollection<MainPageActionButton> ActionButtons { get; }
     }
 
 }

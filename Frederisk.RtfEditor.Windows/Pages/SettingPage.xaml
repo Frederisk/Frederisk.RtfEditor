@@ -7,7 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Resources>
+        <local:ElementThemeToBoolConverter x:Key="elementThemeToBoolConverter"></local:ElementThemeToBoolConverter>
+    </Page.Resources>
     <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock FontSize="36">
+                    Visual Effect
+                </TextBlock>
+                <ToggleSwitch OnContent="Light" OffContent="Dark" Header="Theme" 
+                              IsOn="{x:Bind Path=VisualViewModule.PageTheme, Mode=TwoWay, Converter={StaticResource elementThemeToBoolConverter}}"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
