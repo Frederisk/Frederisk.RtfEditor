@@ -27,16 +27,21 @@ namespace Frederisk.RtfEditor.Windows.Pages {
             if (!(value is ElementTheme theme)) {
                 throw new ArgumentException("");
             }
-            return (ElementTheme?)theme == ElementTheme.Light;
+            return theme is ElementTheme.Light;
         }
 
         public Object ConvertBack(Object value, Type targetType, Object parameter, String language) {
             if (!(value is Boolean isLight)) {
                 throw new ArgumentException("");
             }
-            return (Boolean)isLight ? ElementTheme.Light : ElementTheme.Dark;
+            return isLight ? ElementTheme.Light : ElementTheme.Dark;
         }
     }
+
+
+
+
+
 
 
 }

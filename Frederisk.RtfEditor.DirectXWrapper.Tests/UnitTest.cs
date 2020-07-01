@@ -8,7 +8,7 @@ namespace Frederisk.RtfEditor.DirectXWrapper.Tests {
     [TestClass]
     public class UnitTest1 {
 
-        [TestMethod]
+        [UITestMethod]
         public void TestMethod1() {
             var writeFactory = new WriteFactory();
             // 獲得系統字體集合資訊。

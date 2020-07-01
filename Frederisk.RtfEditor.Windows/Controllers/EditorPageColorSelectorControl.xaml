@@ -21,11 +21,25 @@
                     </Grid.RowDefinitions>
                     <GridView ItemsSource="{x:Bind Path=ViewModule.ColorButtons}" SelectionMode="None"/>
                     <DropDownButton Content="More Color">
+                        <DropDownButton.Flyout>
+                            <Flyout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <ColorPicker Name="colorPicker" IsMoreButtonVisible="True" IsColorSliderVisible="True" IsColorChannelTextInputVisible="True" IsHexInputVisible="True" ><!--Color="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=OneWay, Converter={StaticResource solidColorBrushToColorConverter}}"-->
+                                        <Grid.Row>0</Grid.Row>
+                                    </ColorPicker>
+                                    <Button Click="ButtonBase_OnClick">
+                                        <Grid.Row>1</Grid.Row>
+                                        Apply
+                                    </Button>
+                                </Grid>
+                            </Flyout>
+                        </DropDownButton.Flyout>
                         <Grid.Row>1</Grid.Row>
                     </DropDownButton>
-                    <ColorPicker IsMoreButtonVisible="True" IsColorSliderVisible="True" IsColorChannelTextInputVisible="True" IsHexInputVisible="True" Color="{x:Bind Path=ViewModule.BackgroundColorBrush, Mode=OneWay, Converter={StaticResource solidColorBrushToColorConverter}}">
-                        <Grid.Row>1</Grid.Row>
-                    </ColorPicker>
                 </Grid>
             </Flyout>
         </DropDownButton.Flyout>

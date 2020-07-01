@@ -22,6 +22,10 @@ namespace Frederisk.RtfEditor.Windows.Controllers {
         }
 
         public EditorPageColorSelectorControlViewModule ViewModule { get; set; }
+
+        private void ButtonBase_OnClick(Object sender, RoutedEventArgs e) {
+            ViewModule.BackgroundColorBrush = new SolidColorBrush(colorPicker.Color);
+        }
     }
 
     public sealed class EditorPageColorSelectorControlViewModule : BindableBase {

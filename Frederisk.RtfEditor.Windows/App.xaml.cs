@@ -4,6 +4,7 @@ using Frederisk.RtfEditor.Windows.Pages;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -89,8 +90,19 @@ namespace Frederisk.RtfEditor.Windows {
 
         public ElementTheme PageTheme {
             get => _pageTheme;
-            set => SetProperty(ref _pageTheme, value);
+            set {
+                if (SetProperty(ref _pageTheme, value))
+                    ApplicationData.Current.RoamingSettings.Values[nameof(PageTheme)] = (Int32)PageTheme;
+            }
+        }
+
+        public VisualEffectViewModule() {
+            if (ApplicationData.Current.RoamingSettings.Values.ContainsKey(nameof(PageTheme))) {
+                PageTheme = (ElementTheme) ApplicationData.Current.RoamingSettings.Values[nameof(PageTheme)];
+            }
+            else {
+                PageTheme = ElementTheme.Default;
+            }
         }
     }
-
 }
